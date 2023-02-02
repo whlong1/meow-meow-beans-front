@@ -6,8 +6,9 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+import ProfileList from './pages/ProfileList/ProfileList'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -46,14 +47,25 @@ const App = () => {
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
+
         <Route
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <Profiles />
+              <ProfileList />
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path="/profiles/:id"
+          element={
+            <ProtectedRoute user={user}>
+              <ProfileDetails />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/change-password"
           element={
