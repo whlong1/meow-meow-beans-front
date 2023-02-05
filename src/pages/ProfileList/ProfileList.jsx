@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import * as profileService from '../../services/profileService'
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 
+import styles from './ProfileList.module.css'
+
 const ProfileList = () => {
   const [profiles, setProfiles] = useState([])
 
@@ -13,13 +15,13 @@ const ProfileList = () => {
     fetchProfiles()
   }, [])
 
+  if (!profiles.length) return <h1>Loading</h1>
+
   return (
-    <main>
-      <ul>
-        {profiles.map(profile =>
-          <ProfileCard key={profile.id} />
-        )}
-      </ul>
+    <main className={styles.container}>
+      {profiles.map((profile) =>
+        <ProfileCard key={profile.id} profile={profile} />
+      )}
     </main>
   )
 }

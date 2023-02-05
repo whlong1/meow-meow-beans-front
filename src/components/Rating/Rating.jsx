@@ -9,13 +9,13 @@ import upMeow from '../../assets/audio/up-meow.wav'
 import downMeow from '../../assets/audio/down-meow.wav'
 import myBeenz from '../../assets/audio/MyMeowMeowBeenz.wav'
 
-const Rating = ({ beenzCount }) => {
-  const [rating, setRating] = useState(beenzCount)
+const Rating = (props) => {
+  const initialRating = props.rating ? props.rating : 0
+  const [rating, setRating] = useState(props.rating ? props.rating : 0)
   const [hover, setHover] = useState(null)
 
   const handleClick = event => {
     const newValue = event.target.id
-
     if (newValue === null || newValue === rating) return
     newValue > rating ? rateUp() : rateDown()
     setRating(newValue)
@@ -45,26 +45,31 @@ const Rating = ({ beenzCount }) => {
   )
 
   return (
-    <div className={styles.container}>
+    <section>
+
+      {rating}
       <div>
-        {Array.from({ length: beenzCount }, (_, index) => index + 1).map(score => (
+        {Array.from({ length: rating }, (_, index) => index + 1).map(score => (
           <img
-            src={score <= (hover ?? rating) ? fullBeenz : emptyBeenz}
-            alt={score <= (hover ?? rating) ? 'filled beenz' : 'empty beenz'}
             key={score}
             id={score}
-            className={styles.beenz}
             onClick={handleClick}
+            className={styles.beenz}
             onMouseOver={handleHover}
             onMouseLeave={handleExit}
+            src={score <= (hover ?? rating) ? fullBeenz : emptyBeenz}
+            alt={score <= (hover ?? rating) ? 'filled beenz' : 'empty beenz'}
           />
         ))}
       </div>
-      <Label rating={rating} />
-      <button onClick={handleClear} className={styles.btn} disabled={!rating}>
+
+      {/* <Label rating={rating} /> */}
+
+      {/* <button onClick={handleClear} className={styles.btn} disabled={!rating}>
         Clear Beenz
-      </button>
-    </div>
+      </button> */}
+
+    </section>
   )
 }
 
