@@ -1,5 +1,5 @@
 // npm modules
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // page components
@@ -16,10 +16,22 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
+
+  const [profiles, setProfiles] = useState([])
+
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      const profileData = await profileService.getAllProfiles()
+      setProfiles(profileData)
+    }
+    fetchProfiles()
+  }, [])
+
 
   const handleLogout = () => {
     authService.logout()
@@ -49,7 +61,7 @@ const App = () => {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <ProfileList />
+              <ProfileList profiles={profiles} />
             </ProtectedRoute>
           }
         />

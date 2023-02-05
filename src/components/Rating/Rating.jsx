@@ -1,71 +1,51 @@
 import { useState } from 'react'
 import useSound from 'use-sound'
-import styles from './Rating.module.css'
 
-import emptyBeenz from '../../assets/emptyBeenz.png'
-import fullBeenz from '../../assets/fullBeenz.png'
+// Images
+import bean from '../../assets/bean.png'
+import noBean from '../../assets/noBean.png'
+
+// Audio
 import upMeow from '../../assets/audio/up-meow.wav'
 import downMeow from '../../assets/audio/down-meow.wav'
-import myBeenz from '../../assets/audio/MyMeowMeowBeenz.wav'
 
-const Rating = (props) => {
-  const initialRating = props.rating ? props.rating : 0
-  const [rating, setRating] = useState(props.rating ? props.rating : 0)
+const Rating = ({ votesReceived }) => {
   const [hover, setHover] = useState(null)
+  const voteCount = votesReceived.length
+  const total = votesReceived.reduce((sum, v) => sum + v.value, 0)
+  const rating = voteCount ? total / voteCount : 1
 
-  const handleClick = event => {
-    const newValue = event.target.id
-    if (newValue === null || newValue === rating) return
+  const handleClick = (e) => {
+    const newValue = parseInt(e.target.id) + 1
     newValue > rating ? rateUp() : rateDown()
-    setRating(newValue)
   }
 
-  const handleHover = event => setHover(event.target.id)
-
-  const handleExit = () => hover !== rating && setHover(null)
-
-  const handleClear = () => {
-    setRating(0)
-    clear()
+  const handleHover = (e) => {
+    if (e.type === 'mouseover') {
+      setHover(e.target.id)
+    } else if (e.type === 'mouseleave') {
+      setHover(null)
+    }
   }
 
-  // export audio to external data asset?
-  const [rateUp] = useSound(
-    upMeow,
-    { volume: 0.2 }
-  )
-  const [rateDown] = useSound(
-    downMeow,
-    { volume: 0.2 }
-  )
-  const [clear] = useSound(
-    myBeenz,
-    { volume: 0.2 }
-  )
+  const [rateUp] = useSound(upMeow, { volume: 0.2 })
+  const [rateDown] = useSound(downMeow, { volume: 0.2 })
+
+  const beanCounter = Array.from({ length: 5 }, (_, idx) => (
+    <img
+      id={idx}
+      key={idx}
+      onClick={handleClick}
+      src={idx <= (hover ?? rating - 1) ? bean : noBean} alt="Bean symbol"
+
+      onMouseOver={handleHover}
+      onMouseLeave={handleHover}
+    />
+  ))
 
   return (
-    <section>
-
-      {rating}
-      <div>
-        {Array.from({ length: rating }, (_, index) => index + 1).map(score => (
-          <img
-            key={score}
-            id={score}
-            onClick={handleClick}
-            className={styles.beenz}
-            onMouseOver={handleHover}
-            onMouseLeave={handleExit}
-            src={score <= (hover ?? rating) ? fullBeenz : emptyBeenz}
-            alt={score <= (hover ?? rating) ? 'filled beenz' : 'empty beenz'}
-          />
-        ))}
-      </div>
-
-      {/* <button onClick={handleClear} className={styles.btn} disabled={!rating}>
-        Clear Beenz
-      </button> */}
-
+    <section id="counter">
+      {beanCounter}
     </section>
   )
 }
