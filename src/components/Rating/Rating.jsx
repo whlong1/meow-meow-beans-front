@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import useSound from 'use-sound'
-import Label from './Label'
 import styles from './Rating.module.css'
 
 import emptyBeenz from '../../assets/emptyBeenz.png'
@@ -62,8 +61,6 @@ const Rating = (props) => {
           />
         ))}
       </div>
-
-      {/* <Label rating={rating} /> */}
 
       {/* <button onClick={handleClear} className={styles.btn} disabled={!rating}>
         Clear Beenz
