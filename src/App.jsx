@@ -8,7 +8,6 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import ProfileList from './pages/ProfileList/ProfileList'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -16,12 +15,12 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as voteService from './services/voteService'
 import * as profileService from './services/profileService'
 
 const App = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(authService.getUser())
-
   const [profiles, setProfiles] = useState([])
 
   useEffect(() => {
@@ -30,8 +29,18 @@ const App = () => {
       setProfiles(profileData)
     }
     fetchProfiles()
-  }, [])
+  }, [user])
 
+  const handleVote = async (formData) => {
+    const newVote = await voteService.create(formData)
+
+    setProfiles(profiles.map((profile) => (
+      newVote.profileId !== profile.id
+        ? profile
+        : { ...profile, votesReceived: [...profile.votesReceived, newVote] }
+    )))
+
+  }
 
   const handleLogout = () => {
     authService.logout()
@@ -61,19 +70,14 @@ const App = () => {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <ProfileList profiles={profiles} />
+              <ProfileList
+                profiles={profiles}
+                handleVote={handleVote}
+              />
             </ProtectedRoute>
           }
         />
 
-        <Route
-          path="/profiles/:id"
-          element={
-            <ProtectedRoute user={user}>
-              <ProfileDetails />
-            </ProtectedRoute>
-          }
-        />
 
         <Route
           path="/change-password"
