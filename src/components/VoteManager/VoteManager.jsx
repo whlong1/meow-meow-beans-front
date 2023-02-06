@@ -38,7 +38,6 @@ const VoteManager = (props) => {
 
   return (
     <section>
-      {rating}
       {Array.from({ length: 5 }, (_, idx) => (
         <img
           id={idx}
