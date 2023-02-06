@@ -1,6 +1,6 @@
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 
-const ProfileList = (props) => {
+const Profiles = (props) => {
   if (!props.profiles.length) return <h1>Loading</h1>
 
   return (
@@ -16,4 +16,4 @@ const ProfileList = (props) => {
   )
 }
 
-export default ProfileList
+export default Profiles
