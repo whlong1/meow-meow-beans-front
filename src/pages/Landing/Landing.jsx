@@ -1,6 +1,5 @@
 import styles from './Landing.module.css'
 import logo from '../../assets/logo.svg'
-
 import * as authService from '../../services/authService'
 
 const Landing = ({ user, handleLogout }) => {
