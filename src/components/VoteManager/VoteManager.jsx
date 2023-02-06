@@ -9,17 +9,20 @@ import noBean from '../../assets/icons/noBean.png'
 import upMeow from '../../assets/audio/up-meow.wav'
 import downMeow from '../../assets/audio/down-meow.wav'
 
-const Rating = ({ profileId, handleVote, votesReceived }) => {
+const VoteManager = (props) => {
+  const { profile } = props
   const [hover, setHover] = useState(null)
 
-  const voteCount = votesReceived.length
-  const total = votesReceived.reduce((sum, v) => sum + v.value, 0)
+  const voteCount = profile.votesReceived.length
+  const total = profile.votesReceived.reduce((sum, v) => sum + v.value, 0)
   const rating = voteCount ? total / voteCount : 1
 
   const handleClick = (e) => {
     const newValue = parseInt(e.target.id) + 1
     newValue > rating ? rateUp() : rateDown()
-    handleVote({ value: newValue, profileId: profileId })
+    props.handleVote({
+      value: newValue, profileId: profile.id
+    })
   }
 
   const handleHover = (e) => {
@@ -34,14 +37,14 @@ const Rating = ({ profileId, handleVote, votesReceived }) => {
   const [rateDown] = useSound(downMeow, { volume: 0.2 })
 
   return (
-    <section id="counter">
+    <section>
+      {rating}
       {Array.from({ length: 5 }, (_, idx) => (
         <img
           id={idx}
           key={idx}
           onClick={handleClick}
           src={idx <= (hover ?? rating - 1) ? bean : noBean} alt="Bean symbol"
-
           onMouseOver={handleHover}
           onMouseLeave={handleHover}
         />
@@ -50,4 +53,4 @@ const Rating = ({ profileId, handleVote, votesReceived }) => {
   )
 }
 
-export default Rating
+export default VoteManager
