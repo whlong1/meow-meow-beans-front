@@ -81,13 +81,13 @@ async function changePassword(credentials) {
 
 async function deleteAccount() {
   try {
-    await fetch(`${BASE_URL}/delete`, {
+    const res = await fetch(`${BASE_URL}/delete`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${tokenService.getToken()}`,
-      },
+      }
     })
-    tokenService.removeToken()
+    return await res.json()
   } catch (err) {
     throw err
   }

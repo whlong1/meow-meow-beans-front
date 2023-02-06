@@ -28,7 +28,7 @@ const App = () => {
       const profileData = await profileService.getAllProfiles()
       setProfiles(profileData)
     }
-    fetchProfiles()
+    if (user) fetchProfiles()
   }, [user])
 
   const handleVote = async (formData) => {
@@ -52,7 +52,7 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} />} />
+        <Route path="/" element={<Landing user={user} handleLogout={handleLogout} />} />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
