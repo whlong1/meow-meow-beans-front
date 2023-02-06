@@ -32,25 +32,10 @@ const App = () => {
   }, [user])
 
   const handleVote = async (formData) => {
-    const newVote = await voteService.create(formData)
-
-    // setProfiles(profiles.map((profile) => (
-    //   newVote.profileId === profile.id
-    //     ? { ...profile, votesReceived: [...profile.votesReceived, newVote] }
-    //     : profile
-    // )))
-
-    setProfiles(profiles.map((profile) => {
-      if (newVote.profileId === profile.id) {
-        return {
-          ...profile,
-          votesReceived: [...profile.votesReceived, newVote]
-        }
-      } else {
-        return profile
-      }
-    }))
-
+    const updatedProfile = await voteService.create(formData)
+    setProfiles(profiles.map((profile) => (
+      profile.id === updatedProfile.id ? updatedProfile : profile
+    )))
   }
 
   const handleLogout = () => {
@@ -88,7 +73,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
 
         <Route
           path="/change-password"

@@ -1,19 +1,24 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './NavBar.module.css'
+import logo from '../../assets/logo.svg'
 
 const NavBar = ({ user, handleLogout }) => {
   return (
     <nav className={styles.container}>
+
+      <NavLink to="/">
+        <img src={logo} alt="Meow Meow Bean" />
+      </NavLink>
+
       {user ?
         <ul>
-          <li><Link to="/profiles">Profiles</Link></li>
-          <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-          <li><Link to="/change-password">Change Password</Link></li>
+          <li><NavLink to="/profiles">PROFILES</NavLink></li>
+          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
         </ul>
-      :
+        :
         <ul>
-          <li><Link to="/login">Log In</Link></li>
-          <li><Link to="/signup">Sign Up</Link></li>
+          <li><NavLink to="/login">LOGIN</NavLink></li>
+          <li><NavLink to="/signup">SIGN UP</NavLink></li>
         </ul>
       }
     </nav>
