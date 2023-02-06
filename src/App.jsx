@@ -34,11 +34,22 @@ const App = () => {
   const handleVote = async (formData) => {
     const newVote = await voteService.create(formData)
 
-    setProfiles(profiles.map((profile) => (
-      newVote.profileId !== profile.id
-        ? profile
-        : { ...profile, votesReceived: [...profile.votesReceived, newVote] }
-    )))
+    // setProfiles(profiles.map((profile) => (
+    //   newVote.profileId === profile.id
+    //     ? { ...profile, votesReceived: [...profile.votesReceived, newVote] }
+    //     : profile
+    // )))
+
+    setProfiles(profiles.map((profile) => {
+      if (newVote.profileId === profile.id) {
+        return {
+          ...profile,
+          votesReceived: [...profile.votesReceived, newVote]
+        }
+      } else {
+        return profile
+      }
+    }))
 
   }
 

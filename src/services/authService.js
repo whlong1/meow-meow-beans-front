@@ -79,4 +79,25 @@ async function changePassword(credentials) {
   }
 }
 
-export { signup, getUser, logout, login, changePassword }
+async function deleteAccount() {
+  try {
+    await fetch(`${BASE_URL}/delete`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    tokenService.removeToken()
+  } catch (err) {
+    throw err
+  }
+}
+
+export {
+  signup,
+  getUser,
+  logout,
+  login,
+  changePassword,
+  deleteAccount
+}

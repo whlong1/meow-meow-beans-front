@@ -14,4 +14,17 @@ async function create(formData) {
   return await res.json()
 }
 
-export { create }
+async function update(formData) {
+  const res = await fetch(BASE_URL, {
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
+  })
+  return await res.json()
+}
+
+
+export { create, update }
