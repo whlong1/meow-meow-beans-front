@@ -6,7 +6,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import ProfileList from './pages/ProfileList/ProfileList'
+import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 
 // components
@@ -66,7 +66,7 @@ const App = () => {
           path="/profiles"
           element={
             <ProtectedRoute user={user}>
-              <ProfileList
+              <Profiles
                 profiles={profiles}
                 handleVote={handleVote}
               />
