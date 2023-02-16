@@ -1,0 +1,46 @@
+<svg id="_ÎÓÈ_1" data-name="—ÎÓÈ_1" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #387bf5;
+      }
+
+      .cls-2 {
+        fill: #053fa8;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" width="1000" height="1000"/>
+  <g>
+    <polygon class="cls-2" points="500 0 447.448 0 500 500 500 0"/>
+    <polygon class="cls-2" points="393.722 0 337.54 0 500 500 393.722 0"/>
+    <polygon class="cls-2" points="277.385 0 211.324 0 500 500 277.385 0"/>
+    <polygon class="cls-2" points="136.729 0 49.798 0 500 500 136.729 0"/>
+    <polygon class="cls-2" points="0 49.796 0 136.728 500 500 0 49.796"/>
+    <polygon class="cls-2" points="0 211.324 0 277.385 500 500 0 211.324"/>
+    <polygon class="cls-2" points="0 337.54 0 393.721 500 500 0 337.54"/>
+    <polygon class="cls-2" points="0 447.447 0 499.999 500 500 0 447.447"/>
+    <polygon class="cls-2" points="0 552.551 0 606.277 500 500 0 552.551"/>
+    <polygon class="cls-2" points="0 662.459 0 722.613 500 500 0 662.459"/>
+    <polygon class="cls-2" points="0 788.675 0 863.27 500 500 0 788.675"/>
+    <polygon class="cls-2" points="0 950.2 0 1000 49.796 1000 500 500 0 950.2"/>
+    <polygon class="cls-2" points="136.726 1000 211.323 1000 500 500 136.726 1000"/>
+    <polygon class="cls-2" points="277.383 1000 337.538 1000 500 500 277.383 1000"/>
+    <polygon class="cls-2" points="393.72 1000 447.447 1000 500 500 393.72 1000"/>
+    <polygon class="cls-2" points="499.998 1000 552.551 1000 500 500 499.998 1000"/>
+    <polygon class="cls-2" points="606.276 1000 662.459 1000 500 500 606.276 1000"/>
+    <polygon class="cls-2" points="722.612 1000 788.675 1000 500 500 722.612 1000"/>
+    <polygon class="cls-2" points="863.27 1000 950.201 1000 500 500 863.27 1000"/>
+    <polygon class="cls-2" points="1000 950.204 1000 863.273 500 500 1000 950.204"/>
+    <polygon class="cls-2" points="1000 788.676 1000 722.615 500 500 1000 788.676"/>
+    <polygon class="cls-2" points="1000 662.461 1000 606.278 500 500 1000 662.461"/>
+    <polygon class="cls-2" points="1000 552.551 1000 500.001 500 500 1000 552.551"/>
+    <polygon class="cls-2" points="1000 447.448 1000 393.722 500 500 1000 447.448"/>
+    <polygon class="cls-2" points="1000 337.54 1000 277.386 500 500 1000 337.54"/>
+    <polygon class="cls-2" points="1000 211.324 1000 136.728 500 500 1000 211.324"/>
+    <polygon class="cls-2" points="1000 49.796 1000 0 950.201 0 500 500 1000 49.796"/>
+    <polygon class="cls-2" points="863.27 0 788.675 0 500 500 863.27 0"/>
+    <polygon class="cls-2" points="722.613 0 662.459 0 500 500 722.613 0"/>
+    <polygon class="cls-2" points="606.277 0 552.551 0 500 500 606.277 0"/>
+  </g>
+</svg>
