@@ -7,7 +7,7 @@ body {
   margin: 0;
   height: 100%;
   overflow: hidden;
-  background-color: #f2f4f8;
+  background-color: var(--background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: sofia-pro, sans-serif;
