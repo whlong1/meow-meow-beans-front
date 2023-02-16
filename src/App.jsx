@@ -1,19 +1,16 @@
-// npm modules
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
-// page components
-import Signup from './pages/Signup/Signup'
+// Components
 import Login from './pages/Login/Login'
+import Signup from './pages/Signup/Signup'
 import Landing from './pages/Landing/Landing'
+import NavBar from './components/NavBar/NavBar'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
-
-// components
-import NavBar from './components/NavBar/NavBar'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
-// services
+// Services
 import * as authService from './services/authService'
 import * as voteService from './services/voteService'
 import * as profileService from './services/profileService'
@@ -52,7 +49,10 @@ const App = () => {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} handleLogout={handleLogout} />} />
+        <Route
+          path="/"
+          element={<Landing user={user} handleLogout={handleLogout} />}
+        />
         <Route
           path="/signup"
           element={<Signup handleSignupOrLogin={handleSignupOrLogin} />}
@@ -61,7 +61,6 @@ const App = () => {
           path="/login"
           element={<Login handleSignupOrLogin={handleSignupOrLogin} />}
         />
-
         <Route
           path="/profiles"
           element={
@@ -73,7 +72,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/change-password"
           element={
@@ -82,8 +80,6 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-
-
       </Routes>
     </>
   )

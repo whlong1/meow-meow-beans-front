@@ -13,13 +13,11 @@ const Landing = ({ user, handleLogout }) => {
     <main className={styles.container}>
       <h1>Meow Meow <br/> Beans</h1>
       <img src={logo} alt="A meow meow bean" />
-
       {user &&
         <button onClick={handleDeleteAccount}>
           DELETE ACCOUNT
         </button>
       }
-
     </main>
   )
 }
