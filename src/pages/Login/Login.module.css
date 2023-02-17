@@ -1,5 +1,8 @@
 .container {
+  width: 100%;
+  padding: 20px;
   display: flex;
+  overflow: scroll;
   align-items: center;
   flex-direction: column;
 }

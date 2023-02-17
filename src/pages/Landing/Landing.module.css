@@ -37,17 +37,15 @@
 }
 
 .container button {
-  font-weight: 900;
+  color: white;
   font-size: 20px;
   cursor: pointer;
-  border: 3px solid var(--font-outline);
-  border: 2px solid white;
+  font-weight: 900;
   border-radius: 5px;
-  padding: 10px 24px 10px 24px;
   text-align: center;
-  color: white;
-  background: var(--secondary);
   background: black;
+  border: 2px solid white;
+  padding: 10px 24px 10px 24px;
   box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
   -moz-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0, 0, 0, 0.25);
